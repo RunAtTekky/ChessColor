@@ -11,6 +11,8 @@ body {
 
 main {
   background-color: #ffdfd6;
+  height: 10vh;
+  padding-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,11 +27,11 @@ main {
 
 #choice {
   background-color: #021526;
-  height: 70vh;
+  height: 40vh;
   width: 100vw;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   gap: 20px;
 }
 
@@ -73,4 +75,26 @@ main {
   gap: 20px;
   align-items: center;
   justify-content: center;
+}
+
+#correct {
+  font-size: 32px;
+}
+
+#incorrect {
+  font-size: 32px;
+}
+
+#timeblock {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aqua; */
+}
+
+#timer {
+  color: beige;
+  font-size: 42px;
 }

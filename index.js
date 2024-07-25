@@ -5,8 +5,22 @@ let whiteCorrect = false;
 let prevCoordinate = "aa";
 let correctScore = 0;
 let incorrectScore = 0;
+let questions = 0;
+let seconds = 0;
+let gameOver = false;
+
+function timer() {
+  let timer = setInterval(() => {
+    if (!gameOver) {
+      document.getElementById("timer").innerHTML = ++seconds;
+    } else clearInterval(timer);
+  }, 1000);
+}
 
 function getNewCoordinate() {
+  if (questions === 10) {
+    return declareResults();
+  }
   const file = Math.floor(Math.random() * n);
   const rank = Math.floor(Math.random() * n);
 
@@ -14,10 +28,11 @@ function getNewCoordinate() {
   else whiteCorrect = false;
 
   const coordinate = files[file] + ranks[rank];
-  if (coordinate === prevCoordinate) getNewCoordinate();
+  if (coordinate === prevCoordinate) return getNewCoordinate();
   prevCoordinate = coordinate;
   const square = document.getElementById("square");
   square.innerHTML = coordinate;
+  questions++;
 }
 
 function whiteClickHandler() {
@@ -60,4 +75,12 @@ function blackClickHandler() {
   getNewCoordinate();
 }
 
+function declareResults() {
+  gameOver = true;
+  timer();
+  document.getElementById("white").style.display = "none";
+  document.getElementById("black").style.display = "none";
+}
+
 getNewCoordinate();
+timer();

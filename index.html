@@ -14,8 +14,14 @@
       </div>
     </main>
     <div id="choice">
-      <div id="white" onclick="whiteClickHandler()"><h1>White</h1></div>
-      <div id="black" onclick="blackClickHandler()"><h1>Black</h1></div>
+      <div class="response">
+        <div id="white" onclick="whiteClickHandler()"><h1>White</h1></div>
+        <h1 id="correct" style="color: green">0</h1>
+      </div>
+      <div class="response">
+        <div id="black" onclick="blackClickHandler()"><h1>Black</h1></div>
+        <h1 id="incorrect" style="color: red">0</h1>
+      </div>
     </div>
   </body>
   <script src="index.js"></script>

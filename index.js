@@ -3,6 +3,8 @@ const ranks = [1, 2, 3, 4, 5, 6, 7, 8];
 const n = files.length;
 let whiteCorrect = false;
 let prevCoordinate = "aa";
+let correctScore = 0;
+let incorrectScore = 0;
 
 function getNewCoordinate() {
   const file = Math.floor(Math.random() * n);
@@ -21,8 +23,11 @@ function getNewCoordinate() {
 function whiteClickHandler() {
   const white = document.getElementById("white");
   let color = "red";
+  incorrectScore++;
   if (whiteCorrect) {
     color = "green";
+    incorrectScore--;
+    correctScore++;
   }
   setTimeout(() => {
     white.style.backgroundColor = color;
@@ -30,14 +35,19 @@ function whiteClickHandler() {
       white.style.backgroundColor = "#FFDFD6";
     }, 250);
   }, 10);
+  document.getElementById("correct").innerHTML = correctScore;
+  document.getElementById("incorrect").innerHTML = incorrectScore;
   getNewCoordinate();
 }
 
 function blackClickHandler() {
   const black = document.getElementById("black");
   let color = "red";
+  incorrectScore++;
   if (!whiteCorrect) {
     color = "green";
+    incorrectScore--;
+    correctScore++;
   }
   setTimeout(() => {
     black.style.backgroundColor = color;
@@ -45,6 +55,8 @@ function blackClickHandler() {
       black.style.backgroundColor = "black";
     }, 250);
   }, 10);
+  document.getElementById("correct").innerHTML = correctScore;
+  document.getElementById("incorrect").innerHTML = incorrectScore;
   getNewCoordinate();
 }
 

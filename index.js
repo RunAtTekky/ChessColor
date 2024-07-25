@@ -2,6 +2,7 @@ const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const ranks = [1, 2, 3, 4, 5, 6, 7, 8];
 const n = files.length;
 let whiteCorrect = false;
+let prevCoordinate = "aa";
 
 function getNewCoordinate() {
   const file = Math.floor(Math.random() * n);
@@ -11,35 +12,37 @@ function getNewCoordinate() {
   else whiteCorrect = false;
 
   const coordinate = files[file] + ranks[rank];
+  if (coordinate === prevCoordinate) getNewCoordinate();
+  prevCoordinate = coordinate;
   const square = document.getElementById("square");
   square.innerHTML = coordinate;
 }
 
 function whiteClickHandler() {
-  const choice = document.getElementById("choice");
+  const white = document.getElementById("white");
   let color = "red";
   if (whiteCorrect) {
     color = "green";
   }
   setTimeout(() => {
-    document.body.style.backgroundColor = color;
+    white.style.backgroundColor = color;
     setTimeout(() => {
-      document.body.style.backgroundColor = "white";
+      white.style.backgroundColor = "#FFDFD6";
     }, 250);
   }, 10);
   getNewCoordinate();
 }
 
 function blackClickHandler() {
-  const choice = document.getElementById("choice");
+  const black = document.getElementById("black");
   let color = "red";
   if (!whiteCorrect) {
     color = "green";
   }
   setTimeout(() => {
-    document.body.style.backgroundColor = color;
+    black.style.backgroundColor = color;
     setTimeout(() => {
-      document.body.style.backgroundColor = "white";
+      black.style.backgroundColor = "black";
     }, 250);
   }, 10);
   getNewCoordinate();

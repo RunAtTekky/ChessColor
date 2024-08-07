@@ -98,3 +98,17 @@ main {
   color: beige;
   font-size: 42px;
 }
+
+#resetDiv {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+#reset {
+  width: 80px;
+  height: 5vh;
+  border-radius: 30px;
+
+  font-weight: 900;
+}

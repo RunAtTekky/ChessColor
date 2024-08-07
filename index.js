@@ -9,6 +9,26 @@ let questions = 0;
 let seconds = 0;
 let gameOver = false;
 
+function reset() {
+  whiteCorrect = false;
+  correctScore = 0;
+  incorrectScore = 0;
+  questions = 0;
+  seconds = 0;
+  gameOver = false;
+
+  document.getElementById("white").style.opacity = "1";
+  document.getElementById("black").style.opacity = "1";
+
+  document.getElementById("correct").innerHTML = correctScore;
+  document.getElementById("incorrect").innerHTML = incorrectScore;
+
+  document.getElementById("timer").innerHTML = seconds;
+
+  getNewCoordinate();
+  timer();
+}
+
 function timer() {
   let timer = setInterval(() => {
     if (!gameOver) {
@@ -36,6 +56,7 @@ function getNewCoordinate() {
 }
 
 function whiteClickHandler() {
+  if (gameOver) return;
   const white = document.getElementById("white");
   let color = "red";
   incorrectScore++;
@@ -56,6 +77,7 @@ function whiteClickHandler() {
 }
 
 function blackClickHandler() {
+  if (gameOver) return;
   const black = document.getElementById("black");
   let color = "red";
   incorrectScore++;
@@ -78,8 +100,8 @@ function blackClickHandler() {
 function declareResults() {
   gameOver = true;
   timer();
-  document.getElementById("white").style.display = "none";
-  document.getElementById("black").style.display = "none";
+  document.getElementById("white").style.opacity = "0";
+  document.getElementById("black").style.opacity = "0";
 }
 
 getNewCoordinate();

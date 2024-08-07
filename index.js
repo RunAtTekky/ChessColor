@@ -8,6 +8,7 @@ let incorrectScore = 0;
 let questions = 0;
 let seconds = 0;
 let gameOver = false;
+let isTimerRunning = false;
 
 function reset() {
   whiteCorrect = false;
@@ -30,6 +31,8 @@ function reset() {
 }
 
 function timer() {
+  if (isTimerRunning) return;
+  isTimerRunning = true;
   let timer = setInterval(() => {
     if (!gameOver) {
       document.getElementById("timer").innerHTML = ++seconds;
@@ -100,6 +103,7 @@ function blackClickHandler() {
 function declareResults() {
   gameOver = true;
   timer();
+  isTimerRunning = false;
   document.getElementById("white").style.opacity = "0";
   document.getElementById("black").style.opacity = "0";
 }
